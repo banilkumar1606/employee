@@ -1,5 +1,14 @@
 package com.vmware.employee.constants;
 
+/**
+ * The Enum STATUS.
+ */
 public enum STATUS {
-	IN_PROGRESS, SUCCESS, FAILED
+
+	/** The in progress. */
+	IN_PROGRESS,
+	/** The success. */
+	SUCCESS,
+	/** The failed. */
+	FAILED
 }

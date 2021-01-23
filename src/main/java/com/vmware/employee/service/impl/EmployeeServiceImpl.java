@@ -28,16 +28,30 @@ import com.vmware.employee.util.EmployeeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The Class EmployeeServiceImpl.
+ */
 @Service
+
+/** The Constant log. */
 @Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
+	
+	/** The emp util. */
 	@Autowired
 	EmployeeUtil empUtil;
+	
+	/** The employee repository. */
 	@Autowired
 	EmployeeRepository employeeRepository;
+	
+	/** The transaction repository. */
 	@Autowired
 	TranscationStatusRepository transactionRepository;
 
+	/* (non-Javadoc)
+	 * @see com.vmware.employee.service.EmployeeService#saveEmployeeData(org.springframework.web.multipart.MultipartFile)
+	 */
 	@Override
 	public String saveEmployeeData(MultipartFile file) {
 		String transactionId = null;
@@ -75,10 +89,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return transactionId;
 	}
 
+	/**
+	 * Prints the status.
+	 *
+	 * @param data the data
+	 */
 	private void printStatus(String data) {
 		log.info("Result:" + data);
 	}
 
+	/**
+	 * Save employees.
+	 *
+	 * @param empList the emp list
+	 * @param transaction the transaction
+	 * @return the string
+	 */
 	private String saveEmployees(List<Employee> empList, Transaction transaction) {
 		empList.stream().forEach(e -> {
 			transaction.setStatus(STATUS.IN_PROGRESS);
@@ -90,6 +116,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return EmployeeConstants.SUCCESS;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.vmware.employee.service.EmployeeService#getEmployeeData(java.lang.Integer)
+	 */
 	@Override
 	public Employee getEmployeeData(Integer empID) {
 		Optional<EmployeeEntity> empEntity = employeeRepository.findById(empID);
@@ -100,6 +129,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.vmware.employee.service.EmployeeService#deleteEmployeeData(java.lang.Integer)
+	 */
 	@Override
 	public Map<String, Boolean> deleteEmployeeData(Integer empID) {
 		EmployeeEntity employee = employeeRepository.findById(empID)
@@ -111,6 +143,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return response;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.vmware.employee.service.EmployeeService#getTransactionStatus(java.lang.String)
+	 */
 	@Override
 	public Transaction getTransactionStatus(String transactionId) {
 		TransactionEntity transactionEntity;
@@ -123,6 +158,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return transactionEntity._toConvertTransaction();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.vmware.employee.service.EmployeeService#getAllEmployeesData()
+	 */
 	@Override
 	public List<Employee> getAllEmployeesData() {
 		List<Employee> empList = new ArrayList<>();
@@ -133,6 +171,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return empList;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.vmware.employee.service.EmployeeService#updateEmployeeData(com.vmware.employee.model.Employee, java.lang.Integer)
+	 */
 	@Override
 	public Employee updateEmployeeData(Employee employee, Integer empId) {
 		EmployeeEntity employeeEntity = employeeRepository.findById(empId)

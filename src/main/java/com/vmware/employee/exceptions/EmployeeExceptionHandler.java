@@ -10,7 +10,12 @@ import com.vmware.employee.constants.EmployeeConstants;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The Class EmployeeExceptionHandler.
+ */
 @RestControllerAdvice
+
+/** The Constant log. */
 @Slf4j
 public class EmployeeExceptionHandler {
 	/**

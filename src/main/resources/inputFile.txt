@@ -1,5 +1,0 @@
-Raju 25 4
-Maruthi 22 5
-vmware 26 6
-google 30 7
-us 29 8

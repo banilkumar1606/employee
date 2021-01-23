@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.istack.NotNull;
-import com.vmware.employee.PostAPIResponse;
 import com.vmware.employee.constants.EmployeeConstants;
 import com.vmware.employee.exceptions.EmployeeNotFoundException;
 import com.vmware.employee.model.Employee;
 import com.vmware.employee.model.Transaction;
+import com.vmware.employee.response.PostAPIResponse;
 import com.vmware.employee.service.EmployeeService;
 
 /**
